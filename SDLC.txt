@@ -1,0 +1,106 @@
+      SDLC of Job_APP
+
+1.Planning
+    *Goal-Create a web-based job application system that allows applicants to build profile, browse and apply for jobs, employers to manage postings view applicants and thier profile.
+    *Scope: Online portal with applicant accounts(user), job listings, Employer dashboard and  admin dashboard.
+    *Problems it solves:--information gap between employees and employers.
+                        ---save time and cost of applicatnts which was spent on searching jobs on magazines ,bulletin boards,and frequent visits to office
+    *Timeline:Max of 2 months
+    *Risks:Data security for resumes, heavy server load during job fairs.
+    *Group Members and Role(2 Full stack developers)
+
+
+2.Reaquirement Anlaysis
+    2.1:Functional requirements:
+
+            -Applicants can register, log in, and apply for jobs.
+            -Employers can post/edit/remove job listings.
+            -Admin can manage users and reports.
+            -AI integrated for job and application recommendation
+
+
+    2.2: Non-Functional Requirements:
+            -Secure authentication.
+            -System should handle at least 500 concurrent users.
+
+3.Design:
+        -Folder Structure
+                    .
+                    └── Job app/
+                        ├── public/
+                        │   ├── src/
+                        │   │   ├── .css
+                        │   │   └── .js
+                        │   └── Assets/
+                        │       └── .images
+                        ├── views/
+                        │   └── templates
+                        ├── package.json
+                        ├── package_lock.json
+                        ├── server.js
+                        |---SDLC.txt
+                        |---Doc.txt
+                        └── nodemodules/
+                            └── node_modules list
+        Database Design
+                    Entities
+
+                        -Users (applicants, employers, admins)
+                        -Jobs (job postings created by employers)
+                        -Applications (linking applicants to jobs)
+                        -Resumes (uploaded by applicants)
+                    relationships
+                        -One employer (user) → many jobs.
+
+                        -one applicant (user) → many applications.
+
+                        -one job → many applications.
+
+                        -one applicant → many resumes.
+
+4.Development:
+            Backend:Node.js + Express
+            Front-end:React(Later,After completing the project)
+            Database:PostgreSql
+            .
+            .
+            .
+            
+5.Testing:
+        Unit testing:(for Login,sign up.....etc with correct and wrong credentials)
+        Integration testing:Checking whether the buttons correctly function CRUD operations
+        system Testing:Postman for the back end and firebase(optional) for the frontend
+        UAT:Employers role testign whether they could post and delete jobs
+
+
+
+6.Deployment:
+        The first phase project will be deployed with Render
+        The second phase with react frame work will be deployed with vercel(front end and render -backend)
+
+7.Maintainance:
+        WE maintain the system based on our professional view and user expreience(feed back from users) during and after deployemnt.For now the supposed maintainance types are: 
+            -Corrective: Fixed bugs
+
+            Adaptive: Updated to support mobile responsiveness,cross platforms,different web browsers(chrome,edge,brav..etc)
+
+            Perfective:Like Adding AI-based job recommendation for applicants.
+
+
+
+
+
+
+
+
+Time Frame work
+
+1.Landing Page and authentication(signup+login with OAuth and jwt)->  1 week (week 1)
+2.The three dashboards(employer,employee and admin with respective features)->3 week (week 4)
+3.AI-integration->1 week(week 5)
+4.Deployment->3 days(week 6)
+5.Trnsforming it to Client-server System Architecture and using react framework->2 weeks(8 -weeks)
+
+
+
+                                                        
