@@ -1,0 +1,77 @@
+.largerContainer{
+
+background-color: #040a19;
+
+display:flex;
+
+justify-content:center;
+
+color:white;
+
+padding:30px 30px;
+
+}
+
+.smaller{
+
+background-color: #323d45;
+
+ padding:20px 20px ;
+
+min-width: 300px;
+
+}
+
+h1{
+
+ color:#11b59e;
+
+ opacity:0.88;
+
+}
+
+h2{
+
+color:#11b59e;
+
+ opacity:0.88; 
+
+}
+
+#login{
+
+ background-color: #11b59e;
+
+ color:white;
+
+ border-radius: 9px;
+
+ opacity:0.88;
+
+ border:none;
+
+}
+
+#signup{
+
+ background-color: #4e4e5a;
+
+ opacity:1;
+
+ color:white;
+
+ border-radius:9px;
+
+border:none;
+
+ text-align: center;
+
+
+
+}
+
+.button{
+
+padding:10px 100px;
+
+}
