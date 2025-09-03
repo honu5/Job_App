@@ -9,6 +9,7 @@ justify-content:center;
 color:white;
 
 padding:30px 30px;
+height:100vh;
 
 }
 
@@ -27,6 +28,7 @@ h1{
  color:#11b59e;
 
  opacity:0.88;
+ text-align: center;
 
 }
 
@@ -35,7 +37,10 @@ h2{
 color:#11b59e;
 
  opacity:0.88; 
-
+text-align: center;
+}
+h3{
+    font-size: x-large;
 }
 
 #login{
@@ -44,12 +49,13 @@ color:#11b59e;
 
  color:white;
 
- border-radius: 9px;
+ border-radius: 10px;
 
  opacity:0.88;
 
  border:none;
-
+ width: 100px;
+font-size: large;
 }
 
 #signup{
@@ -63,7 +69,8 @@ color:#11b59e;
  border-radius:9px;
 
 border:none;
-
+ width: 100px;
+font-size: large;
  text-align: center;
 
 
@@ -73,5 +80,6 @@ border:none;
 .button{
 
 padding:10px 100px;
+font-size:xx-large;
 
 }
