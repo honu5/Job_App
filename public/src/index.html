@@ -1,43 +1,83 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
- <meta charset="UTF-8">
-
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
- <title>Home page</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home page</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="largerContainer">
 
- <div class="smaller">
+<body class="dark-mode">
+  <div class="largerContainer">
+    <nav class="nav-bar">
+      <div class="nav-container">
+        <div class="nav-left">Mela Agenagn</div>
+        <div class="right-nav">
+          <div class="features element"><a href="#features">Features</a></div>
+          <div class="testimonial element"><a href="#testimonial">Testimonial</a></div>
+          <div class="get-started element"><button class="btn">Get Start</button></div>
+          <div class="toggle-mode element"><button id="modeToggle">☀️</button></div>
+        </div>
+      </div>
+    </nav>
 
- <h1>Mela Agenagn</h1>
+    <div class="smaller">
+      <h1>Mela Agenagn</h1>
+      <h2>Your Future Starts Here!</h2>
+      <h3>
+        Connect with top employers and talented applicants. Our platform simplifies
+        the job search and hiring process.
+      </h3>
+      <div class="button">
+        <button id="login">Login</button>
+        <button id="signup">Sign up</button>
+      </div>
+    </div>
+  </div>
 
- <h2>Your Future Starts Here!</h2>
+  
+  <section id="features" class="features-section">
+    <h2>Features</h2>
+    <div class="features-container">
+    <div class="feature-card">
+    <h3>Smart Job Matching</h3>
+        <p>Find jobs tailored to your skills with our advanced recommendation system.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Employer Dashboard</h3>
+        <p>Post jobs, track applicants, and manage hiring with ease.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Job Filtering Based on Skills</h3>
+        <p>Effortlessly filter job listings to find the best matches for your unique skill set.</p>
+      </div>
+    </div>
+  </section>
 
- <h3> Connect with top employers and talented applicants. Our platform simplifies the job search and hiring process.</h3>
-
- <div class="button">
-
- <button id="login">Login</button>
-
-<button id="signup">Sign up</button>
-
- </div>
-
- </div>
-
-</div>
 
 
 
+  <!-- Testimonial Section -->
+  <section id="testimonial" class="testimonial-section">
+    <h2>What People Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial-card">
+        <p>"This platform helped me land my dream job in just two weeks!"</p>
+        <h4>- Test Test</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"As an employer, I found qualified candidates quickly and easily."</p>
+        <h4>- Test.....</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>"The user experience is smooth, and the support team is amazing."</p>
+        <h4>- Test.......</h4>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
