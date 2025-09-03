@@ -1,0 +1,99 @@
+.largerContainer {
+            background-color: #040a19;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 30px;
+            height: 100vh;
+        }
+
+        .smaller {
+            background-color: #323d45;
+            padding: 50px;
+            width: 70%;
+            height: 80%;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #11b59e;
+            opacity: 0.88;
+            font-weight: 800;
+            font-style: inherit;
+            margin-top: 0px;
+        }
+
+        h2 {
+            color: #11b59e;
+            opacity: 0.88;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: x-large;
+            padding: 0 70px;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+
+        #login {
+            background-color: #11b59e;
+            color: white;
+            border-radius: 25px;
+            opacity: 0.88;
+            border: none;
+            width: 100px;
+            font-size: large;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #login:hover {
+            background-color: #15d1b7;
+            opacity: 1;
+        }
+
+        #signup {
+            background-color: #4e4e5a;
+            opacity: 1;
+            color: white;
+            border-radius: 25px;
+            border: none;
+            width: 100px;
+            font-size: large;
+            text-align: center;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        #signup:hover {
+            background-color: #666675;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .smaller {
+                width: 95%;
+                padding: 30px;
+            }
+            h3 {
+                font-size: large;
+                padding: 0 20px;
+            }
+        }
