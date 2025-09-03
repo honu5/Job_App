@@ -1,0 +1,110 @@
+body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .larger {
+            background-color: #040a19;
+            opacity: 0.91;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 30px;
+        }
+
+        .smaller {
+            background-color: #323d45;
+            width: 40%;
+            padding: 20px;
+            height: auto; /* Changed from 90% to auto for better responsiveness */
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            color: #11b59e;
+            opacity: 0.88;
+            font-weight: 800;
+            font-style: inherit;
+            margin-top: 30px;
+        }
+
+        #input, #passwordInput {
+            border-radius: 15px;
+            width: 100%;
+            height: 30px;
+            font-size: large;
+            border: none;
+            padding: 5px;
+            box-sizing: border-box;
+            background-color: #4e4e5a;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        #userType {
+            border-radius: 15px;
+            width: 100%;
+            height: 35px;
+            font-size: large;
+            border: none;
+            background-color: #4e4e5a;
+            color: white;
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        #label {
+            font-size: large;
+            color: #8d9ca7;
+            margin-bottom: 5px;
+            text-align: left;
+            display: block;
+        }
+
+        #button {
+            border-radius: 15px;
+            width: 100%;
+            height: 35px;
+            margin-top: 20px;
+            border: none;
+            background-color: #11b59e;
+            opacity: 0.88;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #button:hover {
+            background-color: #15d1b7;
+        }
+
+        p {
+            color: white;
+            font-size: large;
+            margin-top: 20px;
+        }
+        a {
+            color: #11b59e;
+            text-decoration: none;
+            opacity: 0.88;
+        }
+        
+        .inner, .password {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .smaller {
+                width: 90%;
+                height: auto;
+                padding: 20px;
+            }
+        }
