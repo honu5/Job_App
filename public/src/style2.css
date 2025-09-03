@@ -1,0 +1,79 @@
+h1{
+    color:#11b59e;
+    text-align: center;
+    font-size: 2.5em;
+     font-weight: 700;
+     
+ 
+}
+.larger{
+    background-color: #040a19;
+    opacity: 0.91;
+    padding:20px 20px;
+    display:flex;
+    flex-direction: column;
+   
+    height: 100vh;
+}
+.smaller{
+    background-color: #323d45;
+     
+     align-items: center;
+     justify-content: center;
+      margin: 0 auto;
+    max-width: 500px;
+    width: 70%;
+    height:90%;
+    
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* New centering and responsive properties */
+  margin: 0 auto;
+  max-width: 500px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+     }
+#input{
+    border-radius: 10px;
+    border:none;
+    padding:10px 15px;
+    padding-left: 60px;
+    padding-right: 50px;
+   background-color: #4e4e5a;
+   margin-bottom: 30px; /* This creates the gap */
+   color: white;
+ width: 100%;
+ 
+  
+}
+#login{
+   text-align: center;
+   justify-content: center;
+    border-radius: 10px;
+    border:none;
+    padding:5px 5px;
+    width:180px;
+    background-color: #11b59e;
+    color:white;
+    cursor: pointer;
+  font-weight: bold;
+  font-size:x-large;
+ 
+}
+#sign{
+    color:#11b59e ;
+    opacity:0.88;
+}
+#login:hover {
+  background-color: #15d1b7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+#label{
+    color:#8d9ca7;
+    opacity:1;
+    font-size:x-large;
+    
+}
