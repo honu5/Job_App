@@ -5,21 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode">
+    <nav class="nav-bar">
+    <div  class="nav-container">
+      <div class="nav-left">Mela Agenagn</div>
+      <div class="right-nav">
+        <div class="login element"><a href="login.html">Login</a></div>
+        <div class="signup element"><button class="btn">Sign Up</button></div>
+        <div class="toggle-mode element"><button id="modeToggle">☀️</button></div>
+      </div>
+    </div>
+  </nav>
     <div class="larger">
         <div class="smaller">
             <h1>Login</h1>
             <label id="label">Username or Email</label>
-        <div class="user"><input id="input"></div>
+        <div class="user"><input type="text" placeholder="Enter your email" id="input"></div>
         <label id="label">Password</label>
-        <div class="password"><input id="input"></div>
+        <div class="password"><input type="password" placeholder="Enter your password" id="input"></div>
         <button id="login">Log In</button>
        <p id="label">Don't have an account? <a href id="sign">Sign up</a></p>  
         </div>
         
          
     </div>
-    
+<script src="script.js"></script>
 </body>
 </html>
