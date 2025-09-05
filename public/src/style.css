@@ -21,6 +21,10 @@ body.light-mode {
   --text-color: #222;
 }
 
+body.light-mode .larger{
+  background-color: white;
+}
+
 
 body{
      margin: 0;
