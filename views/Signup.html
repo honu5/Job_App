@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body class="dark-mode">
@@ -14,8 +14,9 @@
     <div  class="nav-container">
       <div class="nav-left">Mela Agenagn</div>
       <div class="right-nav">
-        <div class="login element"><a href="login.html">Login</a></div>
-        <div class="signup element"><button class="btn">Sign Up</button></div>
+        <div class="login element"><a class="a" href="login">Login</a></div>
+        <div class="signup element"><button class="btn"><a class="a" href="signup">Sign Up</a></button></div>
+        
         <div class="toggle-mode element"><button id="modeToggle">☀️</button></div>
       </div>
     </div>
@@ -30,12 +31,12 @@
                 <input type="password" placeholder="Password" required>
                 <input type="password" placeholder="Confirm Password" required>
 
-        <button type="submit" id="signup">Sign Up</button>
+        <button  type="submit" id="signup">Sign Up</button>
                 </form>
 
      
       <p style="margin-top:20px;">Already have an account? 
-    <a href="login.html" style="color:#11b59e; text-decoration:none;">Login</a>
+    <a href="login" style="color:#11b59e; text-decoration:none;">Login</a>
       </p>
 
      
@@ -50,6 +51,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="/src/script.js"></script>
 </body>
 </html>

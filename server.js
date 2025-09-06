@@ -13,10 +13,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Database connection pool
 const pool = new Pool({
-    user: 'your_username',
+    user: 'postgres',
     host: 'localhost',
     database: 'job_app_db',
-    password: 'your_password',
+    password: 'Lir@7Lir@7',
     port: 5432,
 });
 
@@ -34,8 +34,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/login.html', (req, res) => {
+app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'login.html'));
+});
+
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'Signup.html'));
 });
 
 // API route for user registration
