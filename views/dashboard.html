@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="dark-mode">
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-left" onclick="window.location.href='/'">Mela Agenagn</div>
+            <div class="right-nav">
+                <div class="element"><button class="btn" onclick="logout()">Logout</button></div>
+                <div class="toggle-mode element"><button id="modeToggle">☀️</button></div>
+            </div>
+        </div>
+    </nav>
+    <div class="largerContainer">
+        <div class="smaller">
+            <h1>Welcome to Dashboard</h1>
+            <div id="userInfo">
+                <p>Loading user information...</p>
+            </div>
+        </div>
+    </div>
+    <script src="/src/script.js"></script>
+    <script>
+        // Load user info from localStorage
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        const userInfoDiv = document.getElementById('userInfo');
+        
+        if (user.username) {
+            userInfoDiv.innerHTML = `
+                <h2>Hello, ${user.username}!</h2>
+                <p>User Type: ${user.userType}</p>
+                <p>User ID: ${user.id}</p>
+            `;
+        } else {
+            userInfoDiv.innerHTML = '<p>Please login to access dashboard</p>';
+            setTimeout(() => window.location.href = '/login.html', 2000);
+        }
+        
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
