@@ -25,11 +25,12 @@
   <div class="largerContainer">
     <div style="margin-top: 30vh;" class="smaller">
             <h1>Create Your Account</h1>
-            <form class="signup-form">
-                <input style="margin-top: 50px;" type="text" placeholder="Email or Username" required>
-                <input type="text" placeholder="Full Name" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
+            <form action="/signup" method="POST" class="signup-form">
+                
+                <input style="margin-top: 50px;" name="name" type="text" placeholder="Full Name" required>
+                <input name="email"  type="text" placeholder="Email or Username" required>
+                <input name="password" type="password" placeholder="Password" required>
+                <input name="confirm_password" type="password" placeholder="Confirm Password" required>
 
         <button  type="submit" id="signup">Sign Up</button>
                 </form>
@@ -43,7 +44,7 @@
       <div class="social-signup">
         <p>Or sign up with:</p>
         <div class="social-buttons">
-        <button class="social-btn google">Google</button>
+        <a href="/auth/google" class="social-btn google">Sign up with Google</a>
         <button class="social-btn facebook">Facebook</button>
         <button class="social-btn twitter">Twitter</button>
         </div>

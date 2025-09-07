@@ -382,3 +382,16 @@ a{
   color: white;
 }
 
+
+.social-btn.google {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4285F4;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.social-btn.google:hover {
+    background-color: #357ae8;
+}

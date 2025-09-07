@@ -1,85 +1,128 @@
-const express = require('express');
-const path = require('path');
-const { Pool } = require('pg');
+import dotenv from 'dotenv';
+dotenv.config();
 
+import express from 'express';
+import path, { dirname } from 'path';
+import passport from 'passport';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import bcrypt from 'bcrypt';
+import { fileURLToPath } from 'url';
+import { Pool } from 'pg';
+
+const saltRound = 10;
 const app = express();
 const PORT = process.env.PORT || 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Middleware to parse JSON bodies
+// --- middleware
 app.use(express.json());
-
-// Serve static files from the 'public' directory
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Database connection pool
+app.set("views", path.join(__dirname, "./views"));
+app.set("view engine", "ejs");
+
+// --- database
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'job_app_db',
-    password: 'Lir@7Lir@7',
-    port: 5432,
+  connectionString: process.env.DATABASE_URL
 });
 
-// Test the database connection
-pool.connect((err, client, release) => {
-    if (err) {
-        return console.error('Error connecting to the database:', err.stack);
+try {
+  pool.connect()
+    .then(() => console.log("Connected to database successfully"));
+} catch (err) {
+  console.log("Error connecting to the database", err);
+}
+
+// --- google strategy (no sessions)
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: `${process.env.CALLBACK_URL_BASE}/auth/google/callback`
+}, async (accessToken, refreshToken, profile, done) => {
+  try {
+    const googleId = profile.id;
+    const email = profile.emails?.[0]?.value;
+
+    // check existing by google_id
+    let { rows } = await pool.query('SELECT * FROM Users WHERE google_id = $1', [googleId]);
+    let user = rows[0];
+
+    // if not found, check by email
+    if (!user && email) {
+      ({ rows } = await pool.query('SELECT * FROM Users WHERE email = $1', [email]));
+      user = rows[0];
+      if (user) {
+        await pool.query('UPDATE Users SET google_id = $1 WHERE id = $2', [googleId, user.id]);
+      }
     }
-    console.log('Successfully connected to the PostgreSQL database!');
-    release();
-});
 
-// Routes to serve the HTML pages
+    // if still not found, insert
+    if (!user) {
+      const insert = await pool.query(
+        'INSERT INTO Users (user_name, email, google_id) VALUES ($1, $2, $3) RETURNING *',
+        [profile.displayName || email, email, googleId]
+      );
+      user = insert.rows[0];
+    }
+
+    return done(null, user);
+  } catch (err) {
+    return done(err, null);
+  }
+}));
+
+
+app.get('/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+    prompt: 'select_account',
+    session: false
+  })
+);
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login', session: false }),
+  (req, res) => {
+    res.render('dashboard', { message: "You logged in successfully! Enjoy MelaAfalagi", user: req.user });
+  }
+);
+
+
+
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'index.html'));
+  res.render('index');
 });
-
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'login.html'));
+  res.render('login');
 });
-
 app.get('/signup', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'Signup.html'));
+  res.render('signup');
 });
 
-// API route for user registration
-app.post('/api/register', async (req, res) => {
-    const { username, password, userType } = req.body;
+// signup manual
+app.post("/signup", async (req, res) => {
+  const { name, email, password, confirm_password } = req.body;
 
-    try {
-        const result = await pool.query(
-            'INSERT INTO Users (username, password, user_type) VALUES ($1, $2, $3) RETURNING id',
-            [username, password, userType]
-        );
-        res.status(201).json({ message: 'User registered successfully!', userId: result.rows[0].id });
-    } catch (error) {
-        if (error.code === '23505') {
-            return res.status(409).json({ message: 'Username already exists.' });
-        }
-        console.error('Error during registration:', error);
-        res.status(500).json({ message: 'An internal server error occurred.' });
-    }
+  if (password !== confirm_password) {
+    return res.status(400).json({ message: "Passwords do not match" });
+  }
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, saltRound);
+
+    const result = await pool.query(
+      "INSERT INTO users (user_name, email, my_password) VALUES ($1, $2, $3) RETURNING *",
+      [name, email, hashedPassword]
+    );
+
+    console.log("User registered successfully:", result.rows[0]);
+    res.render("dashboard", { message: "You signed up successfully! Enjoy MelaAfalagi" });
+  } catch (err) {
+    console.log("Error registering user", err);
+    res.status(500).json({ message: "Database error" });
+  }
 });
 
-// API route for user login
-app.post('/api/login', async (req, res) => {
-    const { username, password } = req.body;
-
-    try {
-        const result = await pool.query('SELECT * FROM Users WHERE username = $1', [username]);
-        const user = result.rows[0];
-
-        if (!user || user.password !== password) {
-            return res.status(401).json({ message: 'Invalid credentials.' });
-        }
-        
-        res.status(200).json({ message: 'Logged in successfully!', user: { id: user.id, username: user.username, userType: user.user_type } });
-    } catch (error) {
-        console.error('Error during login:', error);
-        res.status(500).json({ message: 'An internal server error occurred.' });
-    }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running at ${process.env.CALLBACK_URL_BASE}`));
