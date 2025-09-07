@@ -13,10 +13,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Database connection pool
 const pool = new Pool({
-    user: 'postgres',
+    user: 'Lombame Lemma',
     host: 'localhost',
     database: 'job_app_db',
-    password: 'Lir@7Lir@7',
+    password: '1234',
     port: 5432,
 });
 
