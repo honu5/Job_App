@@ -42,7 +42,7 @@ app.get('/signup', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'Signup.html'));
 });
 
-// API route for user registration
+// route for user signup
 app.post('/signup', async (req, res) => {
     const { username, password, userType } = req.body;
 
@@ -61,7 +61,7 @@ app.post('/signup', async (req, res) => {
     }
 });
 
-// API route for user login
+// route for user login
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
