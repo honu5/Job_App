@@ -43,7 +43,7 @@ app.get('/signup', (req, res) => {
 });
 
 // API route for user registration
-app.post('/api/register', async (req, res) => {
+app.post('/signup', async (req, res) => {
     const { username, password, userType } = req.body;
 
     try {
@@ -62,7 +62,7 @@ app.post('/api/register', async (req, res) => {
 });
 
 // API route for user login
-app.post('/api/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
